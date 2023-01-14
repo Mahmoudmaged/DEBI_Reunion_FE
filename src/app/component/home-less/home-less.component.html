@@ -1,0 +1,119 @@
+<div class="sideAlert">
+    {{sideMessage}}
+</div>
+<section class="main d-flex">
+
+
+    <div class="leftPart  d-flex ">
+        <div class="sideNav">
+            <app-side-nav></app-side-nav>
+        </div>
+
+    </div>
+    <div class="middlePart p-5">
+
+        <div>
+
+            <div class="w-100 text-end  p-2">
+                <!-- <button class="btn  addReport ms-auto p-2" (click)="Navigate('addHomeless')">ADD +</button> -->
+                <div class="text-end w-100 d-flex align-items-center justify-content-end">
+                    <button class="btn  addReport ms-auto p-2" (click)="Navigate('addHomeless')">ADD +</button>
+
+                    <button class="btn searchInReport mx-2 p-2  d-flex align-items-center"
+                        (click)="Navigate('searchHomeLess')">Search in report <i class="fa fa-search ms-1"></i></button>
+                </div>
+            </div>
+
+            <div class="Title">
+                <h2>Shelter Resident</h2>
+            </div>
+            <mat-accordion>
+                <mat-expansion-panel *ngFor="let _responseData of responseData;  let i = index" class="my-2" hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title class="">
+                            <div class="row align-items-center justify-content-center w-100">
+                                <div class="col-sm-5 col-md-3 my-1 report ps-2">
+                                    <img class="image-fluid reportImage" src="{{_responseData.imageURl}}">
+                                </div>
+                                <div class="col-sm-7 col-md-9  my-1">
+                                    <div class="row">
+                                        <div class="col-md-4 mb-2 personName">
+                                            <p>Name: <span class="">{{_responseData.name}}</span> </p>
+                                        </div>
+                                        <div class="col-md-4 mb-2 personAge">
+                                            <p>Age: <span class="">{{_responseData.age}}</span> </p>
+                                        </div>
+                                        <div class="col-md-4  mb-2 personGender">
+                                            <p>Gender: <span class="">{{_responseData.gender}}</span> </p>
+                                        </div>
+                                        <div class="col-md-4  mb-2 personDate">
+                                            <p>Date_Time: <span class="">{{_responseData.createdAt|date:'dd-MM-yyyy ,
+                                                    h:mm:ss a'}}</span> </p>
+                                        </div>
+                                        <div class="col-md-4 mb-2 POLICENAME">
+                                            <p> Police Station: <span
+                                                    class="">{{_responseData.policeStationID?.userName}}</span> </p>
+                                        </div>
+                                        <div class="col-md-4 mb-2 POLICENAME">
+                                            <p> shelter: <span class="">{{_responseData.shelterID?.userName}}</span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-12 text-center">
+                                    <i class="fa fa-angle-down reportArrow" aria-hidden="true"
+                                        (click)="showReportDetails()"></i>
+                                    <i class="fa fa-angle-up reportArrow" aria-hidden="true"></i>
+
+                                </div>
+                            </div>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="Dscr">
+                        <div class="row">
+
+                            <div *ngIf="_responseData?.foundlocation" class="col-md-4 mb-2 DOB">
+                                <p> Found Location: <span class="">{{_responseData.foundlocation}}</span> </p>
+                            </div>
+                            <div  *ngIf="_responseData?.foundTime" class="col-md-4 mb-2 DOB">
+                                <p> Found Time: <span class="">
+                                        {{_responseData.foundTime|date:'dd-MM-yyyy ,
+                                        h:mm:ss a'}}</span> </p>
+                            </div>
+
+                            <div *ngIf="_responseData?.finderName" class="col-md-4 mb-2 DOB">
+                                <p> Finder Name: <span class="">{{_responseData.finderName}}</span> </p>
+                            </div>
+                            <div *ngIf="_responseData?.finderNationID" class="col-md-4 mb-2 DOB">
+                                <p> Finder NationID: <span class="">{{_responseData.finderNationID}}</span> </p>
+                            </div>
+                            <div *ngIf="_responseData?.finderPhone" class="col-md-4 mb-2 DOB">
+                                <p> Finder Phone: <span class="">{{_responseData.finderPhone}}</span> </p>
+                            </div>
+                            <div *ngIf="_responseData?.finderEmail" class="col-md-4 mb-2 DOB">
+                                <p> Finder Email: <span class="">{{_responseData.finderEmail}}</span> </p>
+                            </div>
+                            <div *ngIf="_responseData?.Description" class="col-md-12 mb-2 DOB">
+                                <p> Description: <span class="">{{_responseData.description}}</span> </p>
+                            </div>
+                            <hr>
+                            <div class="col-12 mb-2 text-center mt-2">
+                                <h2>Status</h2>
+                                <button class="btn btn-danger p-2 my-1"
+                                    (click)="changeReportStatus(_responseData._id ,'Archive')">Archive</button>
+                                <button class="btn btn-info ms-2 p-2 my-1"
+                                    (click)="changeReportStatus( _responseData._id , 'Active')">Activate</button>
+                                <button class="btn btn-success ms-2 p-2 my-1"
+                                    (click)="changeReportStatus(_responseData._id , 'Matched')">Matched</button>
+                                <button class="btn btn-dark ms-2 p-2 my-1"
+                                    (click)="changeReportStatus(_responseData._id ,'Blocked')">Block</button>
+                            </div>
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+
+    </div>
+</section>

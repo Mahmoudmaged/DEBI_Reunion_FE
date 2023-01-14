@@ -1,0 +1,332 @@
+<div class="overLay" *ngIf="load">
+    <div class="d-flex w-100 h-100 justify-content-center align-items-center">
+        <i class="fa fa-spinner fa-5x fa-spin text-light"></i>
+    </div>
+</div>
+<div class="sideAlert">
+    {{sideMessage}}
+</div>
+<section class="main d-flex">
+
+    <div *ngIf="checkToken" class="leftPart  d-flex ">
+        <div class="sideNav">
+            <app-side-nav></app-side-nav>
+        </div>
+
+    </div>
+    <div class="middlePart p-5">
+
+        <div class="FormDiv m-auto">
+            <div class="labelUp"></div>
+            <div class="formContainer p-3 text-center">
+                <h2>Search in Shelter</h2>
+                <p class="loremText">First let's search in Report data incase someone already reported him/her missing.
+                </p>
+                <form [formGroup]="search" class="mb-2" (ngSubmit)="search.valid && handelSearchInReport()">
+                    <div class="row">
+                        <div class="col-md-6 my-2 p-2">
+                            <div class="form-group">
+                                <input formControlName="name"
+                                    [class.is-valid]="search.controls['name'].status == 'VALID' " class="form-control"
+                                    type="text" placeholder="Name" />
+                            </div>
+                            <div *ngIf="search.controls['name'].errors && search.controls['name'].touched"
+                                class="form-group alert alert-danger my-2">
+                                <p>Please enter valid name</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 my-2 p-2">
+                            <div class="form-group">
+                                <input formControlName="age"
+                                    [class.is-valid]="search.controls['age'].status == 'VALID' " class="form-control"
+                                    type="number" min="1" placeholder="Age" />
+                                <div *ngIf="search.controls['age'].errors && search.controls['age'].touched"
+                                    class="form-group alert alert-danger my-2">
+                                    <p>Please enter valid age</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 my-2 p-2">
+                            <div class="form-group">
+                                <input formControlName="image" class="form-control" type="file" placeholder="image"
+                                    (change)="selectImage($event)" />
+                                <div *ngIf="search.controls['image'].errors && search.controls['image'].touched"
+                                    class="form-group alert alert-danger my-2">
+                                    <p>Please upload missing picture</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6 my-2 p-2">
+                            <div class="form-group w-100 my-2">
+
+                                <div class="d-flex  justify-content-start">
+                                    <label class="textleft me-2">Gender:</label>
+                                    <div class="m-auto">
+                                        <input formControlName="gender" value="Male" class="form-check-input"
+                                            type="radio" name="gender" id="flexRadioDefault1" checked>
+                                        <label class="form-check-label ms-2 loremText" for="flexRadioDefault1">
+                                            Male
+                                        </label>
+                                    </div>
+                                    <div class="form-check-label-dev ms-2 mx-auto">
+                                        <input formControlName="gender" value="Female" class="form-check-input"
+                                            type="radio" name="gender" id="flexRadioDefault1">
+                                        <label class="form-check-label ms-2 loremText" for="flexRadioDefault1">
+                                            Female
+                                        </label>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-12 my-2 p-2">
+                            <div class="form-group">
+                                <button class="btn  w-100" [disabled]="search.invalid">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="my-2">
+            <mat-accordion>
+                <mat-expansion-panel *ngFor="let _responseData of responseData ; let i = index" class="my-2" hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title class="">
+                            <div class="row align-items-center justify-content-center w-100">
+                                <div class="col-md-3 my-1 report">
+                                    <img class="image-fluid reportImage" src="{{_responseData.imageURl}}">
+                                </div>
+                                <div class="col-md-9  my-1">
+                                    <div class="row">
+                                        <div class="col-md-4 mb-2 personName">
+                                            <p>Name: <span class="">{{_responseData?.name}}</span> </p>
+                                        </div>
+                                        <div class="col-md-4 mb-2 personAge">
+                                            <p>Age: <span class="">{{_responseData?.age}}</span> </p>
+                                        </div>
+                                        <div class="col-md-4  mb-2 personGender">
+                                            <p>Gender: <span class="">{{_responseData?.gender}}</span> </p>
+                                        </div>
+                                        <div class="col-md-4  mb-2 personDate">
+                                            <p>Matching Distance: <span class="">{{ matchedPercentage[i] 
+                                                    }}</span> </p>
+                                        </div>
+                                        <div class="col-md-4  mb-2 personTime">
+                                            <p>Time: <span class="">{{_responseData.createdAt|date:'dd-MM-yyyy , h:mm:ss
+                                                    a'}}</span> </p>
+                                        </div>
+                                        <div class="col-md-4 mb-2 POLICENAME">
+                                            <p> Police Station: <span
+                                                    class="">{{_responseData.policeStationID?.userName}}</span> </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-12 text-center">
+                                    <i class="fa fa-angle-down reportArrow" aria-hidden="true"
+                                        (click)="showReportDetails()"></i>
+                                    <i class="fa fa-angle-up reportArrow" aria-hidden="true"></i>
+
+                                </div>
+                            </div>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="Dscr">
+                        <div class="row">
+                            <hr>
+                            <div class="col-md-12  my-2 text-center">
+                                <h3> Missing Information</h3>
+                            </div>
+                            <div class="col-md-4 mb-2 DOB">
+                                <p>Location: <span class="">{{_responseData.lostLocation}}</span> </p>
+                            </div>
+                            <div class="col-md-4 mb-2 DOB">
+                                <p>Date: <span class="">{{_responseData.lostTime |date:'dd-MM-yyyy , h:mm:ss
+                                        a'}}</span> </p>
+                            </div>
+                            <div class="col-md-4 mb-2 DOB">
+                                <p>Status: <span class="">{{_responseData.status}}</span> </p>
+
+                            </div>
+                            <hr>
+                            <div class="col-md-12  my-2 text-center">
+                                <h3> Reporter Information</h3>
+                            </div>
+                            <div class="col-md-4 mb-2 DOB">
+                                <p>Name: <span class="">{{_responseData.reporterName}}</span> </p>
+                            </div>
+                            <div class="col-md-4 mb-2 DOB">
+                                <p>NationID: <span class="">{{_responseData.reporterNationID}}</span> </p>
+                            </div>
+                            <div class="col-md-4 mb-2 DOB">
+                                <p>Phone: <span class="">{{_responseData.reporterPhone}}</span> </p>
+                            </div>
+                            <div class="col-md-4 mb-2 DOB">
+                                <p>Email: <span class="">{{_responseData.reporterEmail}}</span> </p>
+                            </div>
+
+                            <hr>
+                            <div class="col-md-12  my-2 text-center">
+                                <h2>Action</h2>
+                                <button class="btn btn-success p-2 px-5" (click)="displayNotifyRelative(i)">Notify
+                                    relative</button>
+                            </div>
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+
+
+            </mat-accordion>
+        </div>
+    </div>
+</section>
+
+
+<div id="completeModel" class="modal fade " tabindex="-1">
+    <div class="modal-dialog  modal-lg m-auto mt-5 px-2">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">
+                    Add missing to temporary shelter
+                </h3>
+
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-2">
+                <div class="FormDiv m-auto">
+                    <div class="labelUp"></div>
+                    <div class="formContainer p-3 text-center">
+                        <h2>Add To Shelter</h2>
+                        <form [formGroup]="addHomeless" class="mb-2" (ngSubmit)="addHomeless.valid && NotifyRelative(displayReportIDIndex || 0)">
+                            <div class="row">
+                              
+                                <div class="col-md-6 my-2 p-2">
+                                    <div class="form-group">
+                                        <label for="cars">City:</label>
+                                        <select formControlName="lostLocation" class="form-control" name="city" id="city">
+                                            <option *ngFor="let city of egyptCity , let i =index;"
+                                                value="{{city.governorate_name_en}}">{{city.governorate_name_en}}</option>
+                                        </select>
+                                        <div *ngIf="addHomeless.controls['lostLocation'].errors && addHomeless.controls['lostLocation'].touched"
+                                            class="form-group inputCustomError my-2">
+                                            <p>Please provide find Location </p>
+                                        </div>
+                                    </div>
+        
+                                </div>
+                            
+                                <div class="col-md-6 my-3">
+                                    <label for="cars">Choose shelter:</label>
+                                    <select formControlName="shelter" class="form-control" name="shelter" id="shelter">
+                                        <option *ngFor="let shelter of shelters , let i =index;" value="{{shelter._id}}"
+                                            selected>{{shelter.userName}}</option>
+                                    </select>
+                                </div>
+    
+                                <div class="col-md-6 my-2 p-2">
+                                    <div class="form-group">
+                                        <input formControlName="lostTime" class="form-control" type="datetime-local"
+                                            placeholder="Find Date" />
+                                        <div *ngIf="addHomeless.controls['lostTime'].errors && addHomeless.controls['lostTime'].touched"
+                                            class="form-group inputCustomError my-2">
+                                            <p>Please provide find Date and time</p>
+                                        </div>
+                                    </div>
+        
+                                </div>
+                                <div class="col-12 my-2 text-center  ">
+                                    <hr>
+                                    <h3 class="mt-2 d-flex align-items-center justify-content-center rIfo"
+                                        (click)="showReporterInfo()">
+                                        {{reportInfoMessage}}
+                                        <i *ngIf="!angle" class="fa fa-angle-down ms-2"></i>
+                                        <i *ngIf="angle" class="fa fa-angle-up ms-2"></i>
+                                    </h3>
+        
+        
+        
+                                    <div *ngIf="reporterInfo" class="col-12 my-2">
+                                        <div class="row">
+                                            <div class="col-md-6 my-2 p-2">
+                                                <div class="form-group">
+                                                    <input formControlName="reporterName" class="form-control" type="text"
+                                                        placeholder="Reporter Name" />
+                                                </div>
+                                                <div *ngIf="addHomeless.controls['reporterName'].errors && addHomeless.controls['reporterName'].touched"
+                                                    class="form-group inputCustomError my-2">
+                                                    <p>Please your Reporter Name</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 my-2 p-2">
+                                                <div class="form-group">
+                                                    <input formControlName="reporterNationalID" class="form-control"
+                                                        type="number" min="0" placeholder="Reporter National ID" />
+                                                </div>
+                                                <div *ngIf="addHomeless.controls['reporterNationalID'].errors && addHomeless.controls['reporterNationalID'].touched"
+                                                    class="form-group inputCustomError my-2">
+                                                    <p>Please your ID</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 my-2 p-2">
+                                                <div class="form-group">
+                                                    <input formControlName="reporterEmail" class="form-control" type="email"
+                                                        placeholder="Reporter-Email" />
+                                                </div>
+                                                <div *ngIf="addHomeless.controls['reporterEmail'].errors && addHomeless.controls['reporterEmail'].touched"
+                                                    class="form-group inputCustomError my-2">
+                                                    <p>Please enter your email to easiest contact with you</p>
+                                                </div>
+                                            </div>
+        
+                                            <div class="col-md-6 my-2 p-2">
+                                                <div class="form-group">
+                                                    <input formControlName="reporterPhone" class="form-control" type="number"
+                                                        min="0" placeholder="Reporter-Phone" />
+                                                </div>
+                                                <div *ngIf="addHomeless.controls['reporterPhone'].errors && addHomeless.controls['reporterPhone'].touched"
+                                                    class="form-group inputCustomError my-2">
+                                                    <p>Please enter your phone number to easiest contact with you</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+        
+                                </div>
+        
+        
+                                <div class="col-md-12 my-2 p-2">
+                                    <div class="form-group w-100 my-2">
+                                        <textarea formControlName="description" class="form-control"
+                                            placeholder="Describe your missing person" type="radio" id="flexRadioDefault1"
+                                            rows="1" cols="50"></textarea>
+        
+                                        <div *ngIf="addHomeless.controls['description'].errors && addHomeless.controls['description'].touched"
+                                            class="form-group inputCustomError my-2">
+                                            <p>Please enter valid description</p>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="col-12 my-2 p-2">
+                                    <div class="form-group">
+                                        <button class="btn  w-100" [disabled]="addHomeless.invalid">ADD</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn modelClose" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

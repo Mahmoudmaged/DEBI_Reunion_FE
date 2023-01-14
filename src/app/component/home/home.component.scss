@@ -1,0 +1,477 @@
+$mainColor: #630E2B;
+$blackColor: #000;
+$whiteColor: #fff;
+
+* {
+    overflow-x: hidden;
+    line-height: 1;
+}
+
+
+*::-webkit-scrollbar {
+    width: 0 !important;
+    background: transparent;
+}
+.img2{
+    width: 200px;
+    margin-left: 75px !important;
+}
+.sideAlert {
+    background-color: #630E2B;
+    color: $whiteColor;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    position: fixed;
+    right: -100%;
+    top: 5%;
+    padding: 10px 20px;
+    transition: all 1s;
+    z-index: 9999999999999;
+}
+ 
+
+/*Start top-section*/
+.top-section {
+    height: 500px;
+    width: 100%;
+    background-image: url('../../../assets/images/landing/SectionOne/bg.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+    overflow: hidden;
+
+}
+
+.holdPhone {
+    width: 480px;
+    height: 480px;
+    position: absolute;
+    right: 0%;
+    top: 10%;
+    background-image: url('../../../assets/imgs/fam.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.header {
+
+    color: $whiteColor;
+}
+
+.header h1 {
+    font-size: 60px;
+    overflow: hidden;
+    line-height: 1;
+    max-width: 550px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+.header h5 {
+    font-size: 20px;
+    overflow: hidden !important;
+}
+
+.header span {
+    color: $blackColor;
+}
+
+
+// .dd {
+//     // margin-top: -20px;
+// }
+
+.Dinner .row {
+    z-index: 1;
+    // margin-top: -50px;
+    // overflow-y: visible;
+}
+
+
+
+
+
+//start How it works
+
+.HW h2 {
+    color: $blackColor;
+    font-size: 50px;
+    line-height: 1;
+}
+
+.capTion p {
+    font-size: 25px;
+    line-height: 1;
+}
+
+.capTion .count {
+    background-color: $mainColor;
+    color: $whiteColor;
+    border-radius: 50%;
+    width: 35px;
+    padding: 5px;
+    height: 35px;
+    margin: auto;
+    line-height: 1;
+}
+
+.me {
+    margin-left: -65px;
+}
+
+// Q&A
+video {
+    border: 5px solid $blackColor;
+    border-radius: 25px;
+}
+
+.QA {
+    text-align: left;
+    line-height: 1;
+    background-color: lightgray;
+    // opacity: 20%;
+}
+
+.QA .head h2,
+.AboutUs h2 {
+    font-size: 48px;
+    line-height: 1;
+}
+
+.QA .text h3 {
+
+    font-size: 25px;
+    line-height: 1;
+    color: $mainColor;
+}
+
+.QA .text p {
+    font-size: 25px;
+    color: $blackColor;
+}
+
+.AboutUs {
+    background-color: #F2E8EC;
+    color: $mainColor;
+}
+
+.AboutUs p {
+    font-size: 18px;
+    color: $blackColor;
+}
+
+.aboutDesc {
+    word-wrap: normal;
+}
+
+//start section one responsive
+@media only screen and (min-width: 931px) and (max-width: 1320px) {
+
+    .holdPhone {
+        width: 350px;
+        height: 350px;
+        top: 10%;
+        right: 0%;
+    }
+
+    .header {
+        padding-left: 5px !important;
+    }
+}
+
+@media only screen and (min-width: 876px) and (max-width: 930px) {
+
+    .holdPhone {
+        width: 350px;
+        height: 350px;
+        top: 10%;
+        right: 0%;
+    }
+
+    .header {
+        padding-left: 5px !important;
+    }
+
+    .header h1 {
+        font-size: 50px;
+        max-width: 550px;
+    }
+}
+
+@media only screen and (min-width:833px) and (max-width: 876px) {
+
+    .holdPhone {
+        width: 350px;
+        height: 350px;
+        top: 10%;
+        right: 0%;
+    }
+
+    .header {
+        padding-left: 5px !important;
+    }
+
+    .header h1 {
+        font-size: 50px;
+        max-width: 500px;
+    }
+}
+
+@media only screen and (min-width:815px) and (max-width: 833px) {
+
+    .holdPhone {
+        width: 350px;
+        height: 350px;
+        top: 10%;
+        right: 0%;
+    }
+
+    .header {
+        padding-left: 5px !important;
+    }
+
+    .header h1 {
+        font-size: 48px;
+        max-width: 450px;
+    }
+
+
+}
+
+@media only screen and (min-width:755px) and (max-width:815px) {
+
+    .holdPhone {
+        width: 350px;
+        height: 350px;
+        top: 10%;
+        right: 0%;
+    }
+
+    .header {
+        padding-left: 5px !important;
+    }
+
+    .header h1 {
+        font-size: 48px;
+        max-width: 350px;
+    }
+}
+
+@media only screen and (min-width:732px) and (max-width:755px) {
+
+    .holdPhone {
+        width: 350px;
+        height: 350px;
+        top: 10%;
+        right: 0%;
+    }
+
+    .header {
+        padding-left: 5px !important;
+    }
+
+    .header h1 {
+        font-size: 45px;
+        max-width: 300px;
+    }
+    .header h5 {
+        font-size: 25px;
+        max-width: 280px;
+    }
+}
+
+@media only screen and (min-width:662px) and (max-width:732px) {
+
+    .holdPhone {
+        width: 350px;
+        height: 350px;
+        top: 10%;
+        right: 0%;
+    }
+
+    .header {
+        padding-left: 5px !important;
+    }
+
+    .header h1 {
+        font-size: 35px;
+        max-width: 280px;
+    }
+
+    .header h5 {
+        font-size: 28px;
+        max-width: 250px;
+        line-height: 1;
+    }
+}
+
+@media only screen and (min-width:610px) and (max-width:662px) {
+
+    .holdPhone {
+        width: 300px;
+        height: 300px;
+        top: 12%;
+        right: 0%;
+    }
+
+    .header {
+        padding-left: 5px !important;
+    }
+
+    .header h1 {
+        font-size: 35px;
+        max-width: 300px;
+    }
+
+    .header h5 {
+        font-size: 28px;
+        max-width: 280px;
+        line-height: 1;
+    }
+
+}
+
+@media only screen and (min-width:550px) and (max-width:610px) {
+
+    .holdPhone {
+        width: 280px;
+        height: 280px;
+        top: 10%;
+        right: 0%;
+    }
+
+    .header h1 {
+        font-size: 28px;
+        max-width: 280px;
+    }
+    .header h5 {
+        font-size: 24px;
+        max-width: 180px;
+    }
+}
+
+@media only screen and (max-width:554px) {
+
+    .holdPhone {
+        width: 280px;
+        height: 280px;
+        top: 10%;
+        right: 0%;
+    }
+
+    .header h1 {
+        font-size: 28px;
+        max-width: 280px;
+    }
+
+    .header h5 {
+        font-size: 28px;
+        max-width: 200px;
+        line-height: 1;
+    }
+    
+}
+
+@media only screen and (max-width: 500px) {
+
+
+    .holdPhone {
+        width: 280px;
+        height: 280px;
+        right: 0%;
+        top: 10%;
+
+    }
+
+    .header {
+        padding-left: 5px !important;
+    }
+
+    .header h1 {
+        font-size: 30px;
+        max-width: 220px;
+    }
+
+    .header h5 {
+        font-size: 25px;
+        max-width: 200px;
+    }
+
+
+}
+
+
+@media only screen and (max-width: 490px) {
+
+
+    .holdPhone {
+        width: 200px;
+        height: 200px;
+        right: 0%;
+        top: 9%;
+
+    }
+
+    .header {
+        padding-left: 5px !important;
+    }
+
+    .header h1 {
+        font-size: 30px;
+        max-width: 180px;
+    }
+
+    .header h5 {
+        font-size: 25px;
+        max-width: 180px;
+    }
+
+
+}
+
+//end section one responsive
+
+
+
+// @media only screen and (min-width: 780px)and (max-width: 945px) {
+
+//     .Dinner {
+//         padding: 5px !important;
+//         margin: auto;
+//         text-align: center;
+//     }
+// }
+
+
+
+@media only screen and (max-width: 600px) {
+
+    // HW
+    .HW h2 {
+        font-size: 35px;
+    }
+
+    .capTion p {
+        font-size: 20px;
+    }
+
+    //  Q&A
+    .QAInner {
+        padding: 5px !important;
+    }
+
+    .QA .head h2,
+    .AboutUs h2 {
+        font-size: 38px
+    }
+
+    .QA .text h3 {
+
+        font-size: 20px;
+    }
+
+    .QA .text p {
+        font-size: 16px;
+    }
+}

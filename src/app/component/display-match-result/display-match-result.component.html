@@ -1,0 +1,42 @@
+<div class="sideAlert">
+    {{sideMessage}}
+</div>
+
+<div class="main">
+    <div  class="row align-items-center justify-content-center my-5 p-5">
+        <div class="col-md-12 innerDiv2">
+            <div class="text-center my-3">
+                <img src="{{homeless?.imageURl}}" alt="">
+            </div>
+            <div class="row">
+                <div class="col-md-6 my-2">
+                    Missing Name : {{homeless?.name}}
+                </div>
+                <div class="col-md-6 my-2">
+                    Age: {{homeless?.age}}
+                </div>
+                <div class="col-md-6 my-2">
+                    Gender : {{homeless?.gender}}
+                </div>
+                <div class="col-md-6  my-2 personDate">
+                    <p>Find Date: <span class="">{{homeless?.createdAt|date:'dd-MM-yyyy ,
+                            h:mm:ss a'}}</span> </p>
+                </div>
+                <div class="col-md-6 my-2 POLICENAME">
+                    <p> Police Station: <span class="">{{homeless?.policeStationID?.userName}}</span> </p>
+                </div>
+
+                <div class="col-md-6 my-2 POLICENAME">
+                    <p> Shelter: <span class="">{{homeless?.shelterID?.userName}}</span> </p>
+                </div>
+                <div class="col-md-6 my-2 POLICENAME">
+                    <p> Address: <span class="">{{homeless?.shelterID?.address}}</span> </p>
+                </div>
+
+                <div class="col-md-6 my-2 POLICENAME">
+                    <p> Phone: <span class="">{{homeless?.shelterID?.phone}}</span> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

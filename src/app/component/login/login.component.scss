@@ -1,0 +1,462 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    border: 0px transparent;
+    outline: none;
+    // overflow: hidden
+}
+$lightBlue: #2D62ED;
+$darkBlue: #3D14A2;
+$lightRed: #FF007C;
+$lightGreen: #F4F7FE;
+$darkViolet: #8729b9;
+$mainColor: #630E2B;
+$blackColor: #000;
+$whiteColor: #fff;
+
+.sideAlert {
+    background-color: #630E2B;
+    color: $whiteColor;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    position: fixed;
+    right: -100%;
+    top: 5%;
+    padding: 10px 20px;
+    transition: all 1s;
+    z-index: 9999999999999;
+}
+ 
+.overLay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .7);
+    z-index: 5555555555555555;
+}
+
+.overLayFF::-webkit-scrollbar{
+    display: none;
+}
+.overLay2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .7);
+    z-index:99999999999999999 !important;
+
+}
+
+.successRegister {
+    position: relative;
+    max-width: 650px;
+    padding: 20px;
+    text-align: center;
+    color: #7E92D2;
+    background-color: #fff;
+    border-radius: 25px;
+}
+
+.successRegister p {
+    margin: auto;
+    max-width: 550px;
+    font-size: 18px !important;
+    color: #7E92D2 !important;
+}
+
+.successRegister .RTI {
+    padding: 5px;
+    position: absolute;
+    right: 2%;
+    top: 2%;
+    font-weight: 200px !important;
+    // color: black;
+    cursor: pointer;
+}
+
+.loginError p {
+    font-size: 18px !important;
+    color: #7E92D2 !important;
+}
+
+.ldiv {
+    height: 100vh;
+    background-size: 100% 100%;
+    width: 42%;
+    background-repeat: no-repeat;
+    background-image: url("../../../assets/imgs/old-homeless-man-wearing-sweater-blanket-sleeping-cardboard-seeking-help-hungry-food-beggar-people-walking-230181986-transformed.png");
+}
+
+.lContaint {}
+
+.lContaintForm {
+    width: 42%;
+    margin: auto;
+}
+
+.rdiv {
+    padding: 0px;
+    margin: 0px;
+    height: 100vh;
+    background-size: 100% 100%;
+    width: 58%;
+    background-repeat: no-repeat;
+    background-image: url("../../../assets/imgs/Group7.png");
+}
+
+.lContaint h1 {
+    color: #fff;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.lContaint p {
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.RF {
+    background-color: #c7c5c5;
+    border-radius: 45px;
+}
+
+
+.rohead,
+.roSign p {
+    color: #707070 !important;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.signHead {
+    display: none;
+}
+
+.signHead p {
+    // line-height: 1;
+}
+
+.roSign,
+.roSignup {
+    position: relative;
+    cursor: pointer;
+
+}
+
+.roSign hr,
+.roSignup hr {
+    position: absolute;
+    left: 36%;
+    bottom: 0%;
+    padding-bottom: 4px;
+    border-radius: 25px;
+    width: 29%;
+    margin: auto;
+    color: blue;
+}
+
+
+.nestedDiv {
+    background-color: #fff;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-left-radius: 45px;
+    border-bottom-right-radius: 45px;
+    // box-shadow: 0px 0px 10px #a8a5a5;
+    padding: 15px;
+}
+
+
+.nestedDiv label {
+    text-align: left !important;
+    font-size: 18px;
+    color: #7E92D2;
+}
+
+.nestedDiv input {
+    border-bottom: 2px solid #d1d1d1;
+
+}
+
+.loginBtn {
+    background-color: #7E92D2;
+    color: #fff;
+    padding: 5px 20px;
+    font-size: 19px;
+    border-radius: 75px;
+    outline: none;
+    transition: all 1s;
+
+}
+
+.loginBtn:hover {
+    color: #7E92D2;
+    background-color: #fff;
+    border: 1px solid #7E92D2;
+    transition: all 1s;
+
+}
+
+.signupPart {
+    display: block;
+}
+
+.signinPart {
+    display: none;
+}
+
+.xx p {
+    color: #7E92D2 !important;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.form-check-label-dev {
+    margin-left: 45px;
+}
+
+.SendCode {
+    display: none;
+}
+
+.forget {
+    color: #a8a5a5 !important;
+    font-size: 14px !important;
+    font-weight: 400px !important;
+    cursor: pointer;
+}
+
+.restPassword {
+    display: none;
+}
+
+.cli1 {
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url("../../../assets/imgs/212452852_228823279061412_9029654550962803556_n.png");
+}
+
+.ff {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 888888888888888888888888888;
+}
+
+.overLayFF {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .7);
+    z-index: 5555555555555555;
+    overflow-y: scroll;
+}
+
+
+@media screen and (max-width: 1132px) {
+    .lContaint {
+
+        padding: 5px 10px !important;
+    }
+
+    .lContaintForm {
+        padding: 5px !important;
+    }
+}
+
+@media screen and (min-width: 501px)  and (max-width: 600px) {
+    .lContaint {
+        width: 85% !important;
+        padding: 5px !important;
+        margin: auto;
+    }
+
+    .lContaintForm {
+        width: 100% !important;
+        padding: 0px !important;
+        margin: auto !important;
+
+    }
+}
+@media screen and (max-width: 500px) {
+    .lContaint {
+        width: 100% !important;
+        padding: 5px !important;
+        margin: 0px !important;
+    }
+
+    .lContaintForm {
+        width: 100% !important;
+        padding: 0px !important;
+    }
+}
+
+
+// .login {
+//     height: 91.2vh;
+//     background-size: cover;
+//     background-repeat: no-repeat;
+//     background-image: url("../../assets/imgs/signLoginimg.jpg");
+//     padding: 60px;
+// }
+
+// .logwall {
+//     margin-top: 50px;
+//     width: 500px;
+//     background-color: rgba(255, 255, 255, 0.4);
+//     padding: 50px 10px;
+//     border-radius: 25px;
+// }
+
+
+// a {
+//     cursor: pointer;
+// }
+
+// .nameinowall {
+//     position: relative;
+//     width: 80%;
+//     padding-top: 70px;
+// }
+
+// .nameino {
+//     width: 100%;
+//     background-color: #385072;
+//     color: #fff;
+//     border: 0px solid white;
+//     padding: 15px 10px;
+//     margin-bottom: 20px;
+//     outline-color: transparent !important;
+//     outline: none;
+// }
+
+// .iconDiv {
+//     width: 100%;
+//     height: 73%;
+//     background-color: #00264d;
+//     color: #e2e2e1;
+//     font-size: 25px;
+// }
+
+// .loginLink {
+//     text-decoration: none;
+//     color: #00264d;
+// }
+
+// .form-check-input {
+//     background-color: #031f45;
+//     cursor: pointer;
+// }
+
+// .circleIconDiv {
+//     position: absolute;
+//     left: 36%;
+//     bottom: 99%;
+// }
+
+// .circleIcon {
+//     background-color: #00264d;
+//     color: #fff;
+//     border-radius: 50%;
+//     font-weight: 100;
+//     width: 120px;
+//     height: 120px;
+//     font-size: 50px;
+// }
+
+// .loginbtn button {
+//     width: 70%;
+//     padding: 10px;
+//     border-bottom-left-radius: 25px;
+//     border-bottom-right-radius: 25px;
+//     background-color: Transparent;
+//     background-image: linear-gradient(rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.4));
+//     font-size: 20px;
+//     color: #fff;
+//     border: none;
+//     outline: none;
+// }
+
+// .logLink {
+//     text-decoration: none;
+// }
+
+// .logLink span {
+//     width: 50%;
+//     padding: 10px;
+//     border-bottom-left-radius: 25px;
+//     border-bottom-right-radius: 25px;
+//     background-color: Transparent;
+//     background-image: linear-gradient(rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.4));
+//     font-size: 20px;
+//     color: #fff;
+//     border: none;
+//     text-decoration: none;
+//     font-size: 14px;
+//     outline: none;
+// }
+
+// .secondForm,
+// .thirdForm,
+// .forthForm {
+//     display: none;
+// }
+
+// @media screen and (max-width: 760px) {
+//     .logwall {
+//         width: 350px;
+//     }
+
+//     .circleIconDiv {
+//         left: 30%;
+//     }
+
+//     .circleIcon {
+//         width: 100px;
+//         height: 100px;
+//         font-size: 40px;
+//     }
+
+//     .loginLink {
+//         text-decoration: none;
+//     }
+
+//     .login {
+//         height: 91.6vh;
+//     }
+// }
+
+// @media screen and (max-width: 340px) {
+//     .logwall {
+//         width: 250px;
+//     }
+
+//     .login {
+//         height: 105.2vh;
+//     }
+
+//     .circleIconDiv {
+//         left: 25%;
+//     }
+// }
+
+// @media screen and (max-width: 730px) {}
+
+// @media screen and (max-width: 780px) {}
+
+// @media screen and (max-width: 414px) {}

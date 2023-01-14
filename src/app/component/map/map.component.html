@@ -1,0 +1,12 @@
+
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+
+<p>map works </p>
+<agm-map [latitude]="lat" [longitude]="lng" (mapClick)="mapCoords($event)" >
+
+  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>
+
+
+<a [href]="link" target="_blank">link</a>

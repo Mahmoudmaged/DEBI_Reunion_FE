@@ -1,0 +1,86 @@
+<div class="sideAlert">
+    {{sideMessage}}
+</div>
+
+<div class="main">
+
+    <i class="fa fa-home fa-2x p-3" (click)="navigate('')"></i>
+
+    <div *ngIf="!report.name" class="row align-items-center justify-content-center my-5 p-5">
+        <div class="col-md-6 p-4  innerDiv">
+            <form [formGroup]="addReport" (ngSubmit)="addReport.valid && handelGetReport()">
+                <div class="form-group my-2 ">
+                    <input formControlName="reportID" type="text" class="" placeholder="ٌReport-ID">
+                    <div *ngIf="addReport.controls['reportID'].errors && addReport.controls['reportID'].touched"
+                        class="form-group inputCustomError my-2">
+                        <p>Please enter valid reportID</p>
+                    </div>
+                </div>
+                <div class="form-group my-2 ">
+                    <input formControlName="reporterNationalID" type="text" class="" placeholder="Reporter National-ID">
+                    <div *ngIf="addReport.controls['reporterNationalID'].errors && addReport.controls['reporterNationalID'].touched"
+                        class="form-group inputCustomError my-2">
+                        <p>Please enter valid NationalID</p>
+                    </div>
+                </div>
+
+                <div class="form-group my-3 w-100 text-center">
+                    <button type="submit" class="btn SuccessBTN" [disabled]="addReport.invalid">Access your report
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div *ngIf="report.name" class="row align-items-center justify-content-center my-5 p-5">
+        <div class="col-md-12 innerDiv2">
+            <div class="text-center my-3">
+                <img src="{{report?.imageURl}}" alt="">
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 my-2">
+                    Missing Name : {{report?.name}}
+                </div>
+                <div class="col-md-6 my-2">
+                    Age: {{report?.age}}
+                </div>
+                <div class="col-md-6 my-2">
+                    Gender : {{report?.gender}}
+                </div>
+                <div class="col-md-6  my-2 personDate">
+                    <p>Date: <span class="">{{report?.createdAt|date:'dd-MM-yyyy ,
+                            h:mm:ss a'}}</span> </p>
+                </div>
+                <div class="col-md-6 my-2 POLICENAME">
+                    <p> Police Station: <span class="">{{report?.policeStationID?.userName}}</span> </p>
+                </div>
+
+                <div class="col-md-6 my-2 DOB">
+                    <p> lost Location: <span class="">{{report?.lostLocation}}</span> </p>
+                </div>
+                <div class="col-md-6 my-2 DOB">
+                    <p> lost Time: <span class="">{{report?.lostTime|date:'dd-MM-yyyy , h:mm:ss
+                            a'}}</span> </p>
+                </div>
+
+                <div class="col-md-6 my-2 DOB">
+                    <p> Reporter_Name: <span class="">{{report?.reporterName}}</span> </p>
+                </div>
+                <div class="col-md-6 my-2 DOB">
+                    <p> Reporter_NationID: <span class="">{{report?.reporterNationID}}</span> </p>
+                </div>
+                <div class="col-md-6 my-2 DOB">
+                    <p> Reporter_Phone: <span class="">{{report?.reporterPhone}}</span> </p>
+                </div>
+                <div class="col-md-6 my-2 DOB">
+                    <p> Reporter_Email: <span class="">{{report?.reporterEmail}}</span> </p>
+                </div>
+
+                <div class="col-md-6 my-2 DOB">
+                    <p> Status: <span class="">{{report?.status}}</span> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

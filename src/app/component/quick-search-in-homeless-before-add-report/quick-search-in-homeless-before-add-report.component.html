@@ -1,0 +1,178 @@
+<div class="overLay" *ngIf="load">
+    <div class="d-flex w-100 h-100 justify-content-center align-items-center">
+        <i class="fa fa-spinner fa-5x fa-spin text-light"></i>
+    </div>
+</div>
+<div class="sideAlert">
+    {{sideMessage}}
+</div>
+<section class="main d-flex">
+    <div *ngIf="checkToken" class="leftPart  d-flex ">
+        <div class="sideNav">
+            <app-side-nav></app-side-nav>
+        </div>
+
+    </div>
+    <div class="middlePart p-5">
+
+        <div class="FormDiv mx-auto mt-5">
+            <div class="labelUp"></div>
+            <div class="formContainer p-3 text-center">
+                <h2>Quick search</h2>
+                <p class="loremText">First let's search in anonymous people data incase someone already find him.</p>
+                <form [formGroup]="searchReport" class="mb-2"
+                    (ngSubmit)="searchReport.valid && handelSearchInHomeLess()">
+                    <div class="row">
+                        <div class="col-md-6 my-2 p-2">
+                            <div class="form-group">
+                                <input formControlName="name"
+                                    [class.is-valid]="searchReport.controls['name'].status == 'VALID' "
+                                    class="form-control" type="text" placeholder="Missing Name" />
+                            </div>
+                            <div *ngIf="searchReport.controls['name'].errors && searchReport.controls['name'].touched"
+                                class="form-group inputCustomError my-2">
+                                <p>Please enter valid name</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 my-2 p-2">
+                            <div class="form-group">
+                                <input formControlName="age"
+                                    [class.is-valid]="searchReport.controls['age'].status == 'VALID' "
+                                    class="form-control" type="number" min="1" placeholder="Age" />
+                                <div *ngIf="searchReport.controls['age'].errors && searchReport.controls['age'].touched"
+                                    class="form-group inputCustomError my-2">
+                                    <p>Please enter valid age</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 my-2 p-2">
+                            <div class="form-group">
+                                <input formControlName="image" class="form-control" type="file" placeholder="image"
+                                    (change)="selectImage($event)" />
+                                <div *ngIf="searchReport.controls['image'].errors && searchReport.controls['image'].touched"
+                                    class="form-group inputCustomError my-2">
+                                    <p>Please upload missing picture</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6 my-2 p-2">
+                            <div class="form-group w-100 my-2">
+
+                                <div class="d-flex  justify-content-start">
+                                    <label class="textleft me-2">Gender:</label>
+                                    <div class="m-auto">
+                                        <input formControlName="gender" value="Male" class="form-check-input"
+                                            type="radio" name="gender" id="flexRadioDefault1" checked>
+                                        <label class="form-check-label ms-2 loremText" for="flexRadioDefault1">
+                                            Male
+                                        </label>
+                                    </div>
+                                    <div class="form-check-label-dev ms-2 mx-auto">
+                                        <input formControlName="gender" value="Female" class="form-check-input"
+                                            type="radio" name="gender" id="flexRadioDefault1">
+                                        <label class="form-check-label ms-2 loremText" for="flexRadioDefault1">
+                                            Female
+                                        </label>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-12 my-2 p-2">
+                            <div class="form-group w-100">
+                                <button class="btn  w-50 " [disabled]="searchReport.invalid">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div>
+            <div class="text-center my-2">
+                <h2 *ngIf="responseData.length && resultType=='FR'" class="m-auto w-100">
+                    Matching Results Using AI Model
+                </h2>
+                <h2 *ngIf="responseData.length && resultType=='NS'" class="m-auto w-100">
+                    Matching Results Using Normal
+                    Search
+                </h2>
+            </div>
+
+            <mat-accordion>
+                <mat-expansion-panel *ngFor="let _responseData of responseData;  let i = index" class="my-2" hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title class="">
+                            <div class="row align-items-center justify-content-center w-100">
+                                <div class="col-md-3 my-1 report">
+                                    <img class="image-fluid reportImage" src="{{_responseData.imageURl}}">
+                                </div>
+                                <div class="col-md-9  my-1">
+                                    <div class="row">
+                                      
+                                        <div class="col-md-4 mb-2 personName">
+                                            <p>Name: <span class="">{{_responseData?.name}}</span> </p>
+                                        </div>
+                                        <div class="col-md-4 mb-2 personAge">
+                                            <p>Age: <span class="">{{_responseData?.age}}</span> </p>
+                                        </div>
+                                        <div class="col-md-4  mb-2 personGender">
+                                            <p>Gender: <span class="">{{_responseData?.gender}}</span> </p>
+                                        </div>
+                                        <div class="col-md-4  mb-2 personDate">
+                                            <p>Date: <span class="">{{_responseData?.createdAt|date:'dd-MM-yyyy , h:mm:ss a'}}</span> </p>
+                                        </div>
+                                        <div *ngIf="resultType=='FR'" class="col-md-4  mb-2 personTime">
+                                            <p>Matching Distance: <span class="">{{matchedPercentage[i]}}</span> </p>
+                                        </div>
+                                        <div class="col-md-4 mb-2 POLICENAME">
+                                            <p> Police Station: <span
+                                                    class="">{{_responseData?.policeStationID?.userName}}</span> </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-12 text-center">
+                                    <i class="fa fa-angle-down reportArrow" aria-hidden="true"
+                                        (click)="showReportDetails()"></i>
+                                    <i class="fa fa-angle-up reportArrow" aria-hidden="true"></i>
+
+                                </div>
+                            </div>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="Dscr">
+                        <div class="row">
+                            <hr>
+                            <div class="col-md-12  my-2 text-center">
+                                <h3> Shelter Information</h3>
+                            </div>
+                            <div class="col-md-4 mb-2 DOB">
+                                <p> Name: <span class="">{{_responseData?.shelterID?.userName}}</span> </p>
+                            </div>
+                            <div class="col-md-4 mb-2 DOB">
+                                <p> Address: <span class="">{{_responseData?.shelterID?.location}}</span> </p>
+                            </div>
+
+                            <div class="col-md-4 mb-2 DOB">
+                                <p> phone: <span class="">{{_responseData?.shelterID?.phone}}</span> </p>
+                            </div>
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+
+
+            <div class="text-center my-2">
+                <div *ngIf="NoResult">
+                    <h2 class="m-auto w-100 noMatching btn my-2" (click)="navigateToAddingReport()">
+                        No match Result.<span>Do you like to add a report?</span>
+                    </h2>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

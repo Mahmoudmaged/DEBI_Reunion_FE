@@ -1,0 +1,87 @@
+$mainColor: #630E2B;
+$blackColor: #000;
+$whiteColor: #fff;
+.sideAlert {
+    background-color: #630E2B;
+    color: $whiteColor;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    position: fixed;
+    right: -100%;
+    top: 5%;
+    padding: 10px 20px;
+    transition: all 1s;
+    z-index: 9999999999999;
+}
+ 
+.div {
+    background-color: #F6F0F2;
+}
+
+.div img {
+    width: 150px;
+    cursor: pointer;
+    // height: 200px;
+    border-radius: 25px;
+}
+
+.div p {
+    font-size: 18px;
+}
+
+.div p a {
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+.div p a:hover {
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.div h3 {
+
+    font-size: 22px;
+}
+
+.div .socialIcons a{
+    margin-left: 2px ;
+
+}
+.div .socialIcons a i{
+    color: $mainColor;
+
+}
+
+.aboutDesc{
+    word-wrap: normal;
+}
+
+
+
+
+
+
+// 
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+    .secCol{
+        padding: 10px !important;
+    }
+   
+
+}

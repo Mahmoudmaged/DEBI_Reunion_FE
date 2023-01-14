@@ -1,0 +1,190 @@
+<div class="overLay" *ngIf="load">
+    <div class="d-flex w-100 h-100 justify-content-center align-items-center">
+        <i class="fa fa-spinner fa-5x fa-spin text-light"></i>
+    </div>
+</div>
+
+<div class="sideAlert">
+    {{sideMessage}}
+</div>
+<section class="main d-flex">
+
+    <div class="leftPart  d-flex ">
+        <div class="sideNav">
+            <app-side-nav></app-side-nav>
+        </div>
+
+    </div>
+    <div class="middlePart py-5 px-2">
+        <i class="fa fa-home fa-2x m-2"></i>
+        <div class="FormDiv m-auto">
+            <div class="formContainer  text-center">
+            <div class="labelUp"></div>
+
+                <h2 class="py-2">Create Report</h2>
+                <form [formGroup]="addReport" class="mb-2 p-2" (ngSubmit)="addReport.valid && handelAddReport()">
+                    <div class="row">
+                        <div class="col-md-6 my-2 p-2">
+                            <div class="form-group">
+                                <input formControlName="name"
+                                    [class.is-valid]="addReport.controls['name'].status == 'VALID' "
+                                    class="form-control" type="text" placeholder="Name" />
+                            </div>
+                            <div *ngIf="addReport.controls['name'].errors && addReport.controls['name'].touched"
+                                class="form-group inputCustomError my-2">
+                                <p>Please enter valid name</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 my-2 p-2">
+                            <div class="form-group">
+                                <input formControlName="age"
+                                    [class.is-valid]="addReport.controls['age'].status == 'VALID' "
+                                    class="form-control" type="number" min="1" placeholder="Age" />
+                                <div *ngIf="addReport.controls['age'].errors && addReport.controls['age'].touched"
+                                    class="form-group inputCustomError my-2">
+                                    <p>Please enter valid age</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 my-2 p-2">
+                            <div class="form-group">
+                                <input formControlName="image" class="form-control" type="file" placeholder="image"
+                                    (change)="selectImage($event)" />
+                                <div *ngIf="addReport.controls['image'].errors && addReport.controls['image'].touched"
+                                    class="form-group inputCustomError my-2">
+                                    <p>Please upload missing picture</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6 my-2 p-2">
+                            <div class="form-group w-100 my-2">
+
+                                <div class="d-flex  justify-content-start">
+                                    <label class="textleft me-2">Gender:</label>
+                                    <div class="m-auto">
+                                        <input formControlName="gender" value="Male" class="form-check-input"
+                                            type="radio" name="gender" id="flexRadioDefault1" checked>
+                                        <label class="form-check-label ms-2" for="flexRadioDefault1">
+                                            Male
+                                        </label>
+                                    </div>
+                                    <div class="form-check-label-dev ms-2 mx-auto">
+                                        <input formControlName="gender" value="Female" class="form-check-input"
+                                            type="radio" name="gender" id="flexRadioDefault1">
+                                        <label class="form-check-label ms-2" for="flexRadioDefault1">
+                                            Female
+                                        </label>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 my-2 p-2">
+                            <div class="form-group">
+                                <label for="cars">City:</label>
+                                <select formControlName="lostLocation" class="form-control" name="city" id="city">
+                                    <!-- <option value="{{egyptCity[0].governorate_name_en}}" selected>
+                                        {{egyptCity[0].governorate_name_en}}</option> -->
+                                    <option *ngFor="let city of egyptCity , let i =index;"
+                                        value="{{city.governorate_name_en}}">{{city.governorate_name_en}}</option>
+                                </select>
+                                <div *ngIf="addReport.controls['lostLocation'].errors && addReport.controls['lostLocation'].touched"
+                                    class="form-group inputCustomError my-2">
+                                    <p>Please provide find Location </p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6 my-4 p-2 pt-3">
+                            <div class="form-group">
+                                <input formControlName="lostTime" class="form-control" type="datetime-local"
+                                    placeholder="Lost Date" />
+                                <div *ngIf="addReport.controls['lostTime'].errors && addReport.controls['lostTime'].touched"
+                                    class="form-group inputCustomError my-2">
+                                    <p>Please provide lost Date and time</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6 my-2 p-2">
+                            <div class="form-group">
+                                <input formControlName="reporterName"
+                                    [class.is-valid]="addReport.controls['reporterName'].status == 'VALID' "
+                                    class="form-control" type="text" placeholder="Reporter Name" />
+                            </div>
+                            <div *ngIf="addReport.controls['reporterName'].errors && addReport.controls['reporterName'].touched"
+                                class="form-group inputCustomError my-2">
+                                <p>Please your Reporter Name</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 my-2 p-2">
+                            <div class="form-group">
+                                <input formControlName="reporterNationalID"
+                                    [class.is-valid]="addReport.controls['reporterNationalID'].status == 'VALID' "
+                                    class="form-control" type="number" min="0" placeholder="Reporter National ID" />
+                            </div>
+                            <div *ngIf="addReport.controls['reporterNationalID'].errors && addReport.controls['reporterNationalID'].touched"
+                                class="form-group inputCustomError my-2">
+                                <p>Please your ID</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 my-2 p-2">
+                            <div class="form-group">
+                                <input formControlName="reporterEmail"
+                                    [class.is-valid]="addReport.controls['reporterEmail'].status == 'VALID' "
+                                    class="form-control" type="email" placeholder="Reporter-Email" />
+                            </div>
+                            <div *ngIf="addReport.controls['reporterEmail'].errors && addReport.controls['reporterEmail'].touched"
+                                class="form-group inputCustomError my-2">
+                                <p>Please enter your email to easist contact with you</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 my-2 p-2">
+                            <div class="form-group">
+                                <input formControlName="reporterPhone"
+                                    [class.is-valid]="addReport.controls['reporterPhone'].status == 'VALID' "
+                                    class="form-control" type="number" min="0" placeholder="Reporter-Phone" />
+                            </div>
+                            <div *ngIf="addReport.controls['reporterPhone'].errors && addReport.controls['reporterPhone'].touched"
+                                class="form-group inputCustomError my-2">
+                                <p>Please enter your phone number to easist contact with you</p>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-6 my-2 p-2">
+                            <div class="form-group">
+                                <input formControlName="policeStationID"
+                                    [class.is-valid]="addReport.controls['policeStationID'].status == 'VALID' "
+                                    class="form-control" type="text" placeholder="Police station" />
+                            </div>
+                            <div *ngIf="addReport.controls['policeStationID'].errors && addReport.controls['policeStationID'].touched"
+                                class="form-group inputCustomError my-2">
+                                <p>Please enter police station that's locate in the missing area</p>
+                            </div>
+                        </div> -->
+                        <div class="col-md-12 my-2 p-2">
+                            <div class="form-group w-100">
+                                <textarea formControlName="description" class="form-control"
+                                    placeholder="Describe your missing person" type="radio" id="flexRadioDefault1"
+                                    rows="1" cols="50"></textarea>
+
+                                <div *ngIf="addReport.controls['description'].errors && addReport.controls['description'].touched"
+                                    class="form-group inputCustomError my-2">
+                                    <p>Please enter police station that's locate in the missing area</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 my-2 p-2">
+                            <div class="form-group">
+                                <button class="btn  w-100" [disabled]="addReport.invalid">ADD</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

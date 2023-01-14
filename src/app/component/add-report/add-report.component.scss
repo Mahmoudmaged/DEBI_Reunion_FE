@@ -1,0 +1,75 @@
+@import '../quick-search/quick-search.component.scss';
+$lightBlue: #2D62ED;
+$darkBlue: #3D14A2;
+$lightRed: #FF007C;
+$lightGreen: #F4F7FE;
+$darkViolet:#8729b9;
+
+.sideAlert {
+    background-color: #630E2B;
+    color: $whiteColor;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    position: fixed;
+    right: -100%;
+    top: 5%;
+    padding: 10px 20px;
+    transition: all 1s;
+    z-index: 9999999999999;
+}
+ 
+
+.leftPart {
+    width: 5%;
+    height: 100vh;
+}
+
+.sideNav {
+    width: 100%;
+    height: 100vh;
+    background-color: $mainColor;
+    padding: 10px;
+}
+.middlePart{
+    width: 95%;
+}
+
+.middlePart::-webkit-scrollbar {
+    display: none;
+}
+
+//add report
+.FormDiv {
+    max-width: 80% !important;
+}
+
+.fa-home{
+    color: $whiteColor;
+    background-color:$mainColor;
+    padding: 5px;
+    border-radius: 5px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+
+@media only screen and(max-width:1210px) {
+    .leftPart {
+        width: 0%;
+    }
+
+    .fa-home{
+        opacity: 1;
+    }
+
+    .middlePart {
+        width: 100%;
+    }
+}
+
+@media only screen and(max-width:650px){
+    .FormDiv {
+        max-width: 95% !important;
+    }
+    
+}

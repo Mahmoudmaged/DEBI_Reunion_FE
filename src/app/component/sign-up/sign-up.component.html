@@ -1,0 +1,212 @@
+<!-- 
+     1- [formGroup]="signUpForm"
+     2- (ngSubmit)="signUpForm.valid && hadelSearchRport()" 
+     3- [class.is-valid]="signUpForm.controls.email.status == 'VALID' " 
+     4- *ngIf="signUpForm.controls.email.errors && signUpForm.controls.emai.touched" 
+-->
+<div class="overLay" *ngIf="load">
+    <div class="d-flex w-100 h-100 justify-content-center align-items-center">
+        <i class="fa fa-spinner fa-5x fa-spin"></i>
+    </div>
+</div>
+
+<div class="sideAlert">
+    {{sideMessage}}
+</div>
+
+<section>
+    <div class="d-flex align-items-center justify-content-center login py-5">
+        <form [formGroup]="signUpForm"
+        (ngSubmit)="signUpForm.valid && handelSignUp()" >
+        <div>
+            <div class="logwall d-flex align-items-end justify-content-center ">
+                <div class="nameinowall">
+                    <div class="circleIconDiv">
+                        <div class="circleIcon d-flex">
+                            <i class="far fa-user m-auto"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div *ngIf="loginError" class="text-center text-danger">
+                            <p>{{loginErrorMessage}}</p>
+                        </div>
+                        <div class="col-2 pe-0">
+                            <div class="iconDiv d-flex align-items-center justify-content-center">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <div class="col-10 ps-0">
+                            <input class="nameino" placeholder="Username" type="text" formControlName="userName"
+                                [class.is-valid]="signUpForm.controls.userName.status == 'VALID' ">
+                        </div>
+                        <div *ngIf="signUpForm.controls.userName.errors && signUpForm.controls.userName.touched"
+                            class="text-center text-danger">
+                            <p> In-valid UserName</p>
+                        </div>
+                        <div class="col-2 pe-0">
+                            <div class="iconDiv d-flex align-items-center justify-content-center">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                        </div>
+
+                        <div class="col-10 ps-0">
+                            <input class="nameino" placeholder="Email" type="text" formControlName="email"
+                                [class.is-valid]="signUpForm.controls.email.status == 'VALID' ">
+                        </div>
+                        <div *ngIf="signUpForm.controls.email.errors && signUpForm.controls.email.touched"
+                            class="text-center text-danger">
+                            <p>In-valid Email</p>
+                        </div>
+                        <!-- location -->
+                        <div  class="col-2 pe-0">
+                            <div  class="iconDiv d-flex align-items-center justify-content-center">
+                                <i (mapClick)="mapCoords('event')" class="fas fa-map-marker-alt"></i>
+                            </div>
+                        </div>
+                        <div class="col-10 ps-0" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                            <input (mapClick)="mapCoords('event')" class="nameino" placeholder="location" type="text" formControlName="location"
+                                [class.is-valid]="signUpForm.controls.email.status == 'VALID' " >
+                        </div>
+                        <div *ngIf="signUpForm.controls.location.errors && signUpForm.controls.location.touched"
+                            class="text-center text-danger">
+                            <p>In-valid Location</p>
+                        </div>
+                        <!-- Phone -->
+                        <div class="col-2 pe-0">
+                            <div class="iconDiv d-flex align-items-center justify-content-center">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                        </div>
+                        <div class="col-10 ps-0">
+                            <input class="nameino" placeholder="phone" type="text" formControlName="phone"
+                                [class.is-valid]="signUpForm.controls.email.status == 'VALID' ">
+                        </div>
+                        <div *ngIf="signUpForm.controls.phone.errors && signUpForm.controls.phone.touched"
+                            class="text-center text-danger">
+                            <p>In-valid phone number</p>
+                        </div>
+                        <!-- password -->
+                        <div class="col-2 pe-0">
+                            <div class="iconDiv d-flex align-items-center justify-content-center">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+                        <div class="col-10 ps-0">
+                            <input class="nameino" placeholder="Password" type="password" formControlName="password"
+                            [class.is-valid]="signUpForm.controls.password.status == 'VALID' ">
+                        </div>
+                        <div *ngIf="signUpForm.controls.password.errors && signUpForm.controls.password.touched"
+                            class="text-center text-danger">
+                            <p>In-valid Pasword</p>
+                        </div>
+                        <div class="col-2 pe-0">
+                            <div class="iconDiv d-flex align-items-center justify-content-center">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+                        <div class="col-10 ps-0">
+                            <input class="nameino" placeholder="Confirm Password" type="password" formControlName="Cpassword"
+                            [class.is-valid]="signUpForm.controls.Cpassword.status == 'VALID' "> 
+                        </div>
+                        <div *ngIf="signUpForm.controls.Cpassword.errors && signUpForm.controls.Cpassword.touched"
+                            class="text-center text-danger">
+                            <p>In-valid Pasword</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <h4>Role:</h4>
+                        <div class="col-12 d-flex">
+                            <div class="form-check pe-3">
+                                <input formControlName="role" value="policeStation" class="form-check-input" type="radio" name="role"
+                                    id="flexRadioDefault1" checked>
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Police Station
+                                </label>
+                            </div>
+                            <div class="form-check pe-3">
+                                <input formControlName="role" value="shelter" class="form-check-input" type="radio" name="role"
+                                    id="flexRadioDefault2">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Shelter
+                                </label>
+                            </div>
+                        </div>
+                        <div *ngIf="signUpForm.controls.role.errors && signUpForm.controls.role.touched"
+                            class="text-center text-danger">
+                            <p>In-valid Pasword</p>
+                        </div>
+                        <!-- <div class="col-6 mt-5 d-flex">
+                            <a routerLink="/" class="loginLink ms-auto">Already have an account?</a>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="loginbtn d-flex align-items-end justify-content-center ">
+                <button [disabled]="signUpForm.invalid">Sign up</button>
+                
+            </div>
+            <a href="#" class="logLink d-flex align-items-end justify-content-center">
+                <span class="text-center">Already have acount?</span>
+            </a>
+        </div>
+    </form>
+    
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="mapCoords($event)" >
+
+                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+              </agm-map>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div> -->

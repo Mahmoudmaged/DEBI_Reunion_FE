@@ -1,0 +1,844 @@
+<!-- 
+     1- [formGroup]="loginForm"
+     2- (ngSubmit)="loginForm.valid && hadelSearchRport()" 
+     3- [class.is-valid]="loginForm.controls.email.status == 'VALID' " 
+     4- *ngIf="loginForm.controls.email.errors && loginForm.controls.emai.touched" 
+-->
+
+
+
+<section class="main d-flex w-100 h-100">
+
+    <div id="carouselExampleCaptions" class="carousel slide w-100" data-bs-ride="carousel">
+
+        <div class="carousel-inner h-100">
+            <div class="carousel-item h-100">
+                <img src="../../../assets/imgs/213049011_844745432903937_6346799913091131439_n.png"
+                    class="d-block w-100 h-100" alt="...">
+            </div>
+            <div class="carousel-item  h-100 cli1 active">
+                <img src="../../../assets/imgs/212452852_228823279061412_9029654550962803556_n.png"
+                    class="d-block w-100  h-100" alt="...">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- <div class="ldiv d-flex justify-content-center align-items-center">
+        <div class="lContaint py-5 px-5 text-center">
+            <div class="signHead">
+                <h1>Welcome Back</h1>
+                <p>Family reunion helps you to get closer to the people you lost but still alive</p>
+            </div>
+            <div class="lContaintForm p-5 signinPart">
+                <div class="row RF  m-auto mt-4 pt-2 px">
+                    <div class="col-6 rohead roSignup px-3 pt-3">
+                        Sign Up
+                    </div>
+                    <div class="col-6 rohead roSign px-3 pt-3 bg-red">
+                        <p class="mb-2">Sign In</p>
+                        <hr class="hrcol">
+                    </div>
+                    <div class="col-12 nestedDiv">
+                        <form [formGroup]="loginForm" (ngSubmit)="loginForm.valid && handelSignIn()">
+                            <div class="form-group w-100 my-1">
+                                <label class="textleft w-75">Email:</label>
+                                <br>
+                                <input class="w-75" type="email" required
+                                    [class.is-valid]="loginForm.controls.email.status == 'VALID' "
+                                    formControlName="email">
+                            </div>
+                            <div *ngIf="loginForm.controls.email.errors && loginForm.controls.email.touched"
+                                class="text-center my-1 xx">
+                                <p>In-valid Email</p>
+                            </div>
+
+                            <div class="form-group w-100 my-3">
+                                <label class="textleft w-75">Password:</label>
+                                <br>
+                                <input class="w-75" type="password" required
+                                    [class.is-valid]="loginForm.controls['password'].status == 'VALID' "
+                                    formControlName="password">
+                                <div *ngIf="loginForm.controls['password'].errors && loginForm.controls['password'].touched "
+                                    class="text-center  xx">
+                                    <p>In-valid Pasword</p>
+                                </div>
+                            </div>
+                            <div *ngIf="loginError" class="text-center text-danger my-1 loginError">
+                                <p>{{loginErrorMessage}}</p>
+                            </div>
+                            <div class="form-group w-100 my-3">
+                                <button [disabled]="loginForm.invalid" class="loginBtn">Login</button>
+                                <p class="forget" (click)="getEmailToForget()">Forget Password</p>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <div class="lContaintForm p-5 signupPart">
+                <form [formGroup]="signupForm" (ngSubmit)="handelSignUp()">
+
+                    <div class="row RF  m-auto mt-4 pt-2 px">
+                        <div class="col-6 roSignup rohead px-3 pt-3">
+                            Sign Up
+                            <hr class="hrcol">
+                        </div>
+                        <div class="col-6 rohead roSign px-3 pt-3 bg-red">
+                            <p class="mb-2">Sign In</p>
+                        </div>
+                        <div class="col-12 nestedDiv">
+                            <div class="form-group w-100 my-2">
+                                <label class="textleft w-75">UserName:</label>
+                                <br>
+                                <input class="w-75" type="text" required
+                                    [class.is-valid]="signupForm.controls.userName.status == 'VALID' "
+                                    formControlName="userName">
+                            </div>
+                            <div *ngIf="signupForm.controls['userName'].errors && signupForm.controls['userName'].touched"
+                                class="text-center  xx">
+                                <p>In-valid UserName</p>
+                            </div>
+
+
+                            <div class="form-group w-100 my-2">
+                                <label class="textleft w-75">National ID:</label>
+                                <br>
+                                <input class="w-75" type="number" min="0" required
+                                    [class.is-valid]="signupForm.controls['nationalID'].status == 'VALID' "
+                                    formControlName="nationalID">
+                            </div>
+                            <div *ngIf="signupForm.controls['nationalID'].errors && signupForm.controls['nationalID'].touched"
+                                class="text-center  xx">
+                                <p>nationalID</p>
+                            </div>
+                            <div class="form-group w-100 my-2">
+                                <label class="textleft w-75">Email:</label>
+                                <br>
+                                <input class="w-75" type="email" required
+                                    [class.is-valid]="signupForm.controls['email'].status == 'VALID' "
+                                    formControlName="email">
+                            </div>
+                            <div *ngIf="signupForm.controls['email'].errors && signupForm.controls['email'].touched"
+                                class="text-center  xx">
+                                <p>In-valid Email</p>
+                            </div>
+                            <div class="form-group w-100 my-2">
+                                <label class="textleft w-75">Password:</label>
+                                <br>
+                                <input class="w-75" type="password" required
+                                    [class.is-valid]="signupForm.controls['password'].status == 'VALID' "
+                                    formControlName="password">
+                            </div>
+                            <div *ngIf="signupForm.controls['password'].errors && signupForm.controls['password'].touched"
+                                class="text-center  xx">
+                                <p>In-valid password</p>
+                            </div>
+
+                            <div class="form-group w-100 my-2">
+                                <label class="textleft w-75">Repeat Password:</label>
+                                <br>
+                                <input class="w-75" type="password" required
+                                    [class.is-valid]="signupForm.controls['Cpassword'].status == 'VALID' "
+                                    formControlName="Cpassword">
+                            </div>
+                            <div *ngIf="signupForm.controls['Cpassword'].errors && signupForm.controls['Cpassword'].touched"
+                                class="text-center  xx">
+                                <p>Password and confirmation password misMatched</p>
+                            </div>
+
+
+                            <div class="form-group w-100 my-2">
+                                <label class="textleft w-75">Role:</label>
+                                <br>
+                                <div class="d-flex w-75 justify-content-center">
+                                    <div>
+                                        <input formControlName="role" value="Admin" class="form-check-input"
+                                            type="radio" name="role" id="flexRadioDefault1" checked>
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                            Admin
+                                        </label>
+                                    </div>
+                                    <div class="form-check-label-dev">
+                                        <input formControlName="role" value="Shelter" class="form-check-input ml-2"
+                                            type="radio" name="role" id="flexRadioDefault1">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                            Shelter
+                                        </label>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div *ngIf="loginError" class="text-center text-danger my-1 loginError">
+                                <p>{{loginErrorMessage}}</p>
+                            </div>
+
+                            <div class="form-group w-100 my-2">
+                                <button class="loginBtn">SignUp</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+            <div class="lContaintForm p-5 SendCode">
+                <form [formGroup]="sendCode" (ngSubmit)="handelSendCode()">
+                    <div class="row RF  m-auto mt-4 pt-2 px">
+                        <div class="col-12  rohead px-3 pt-3">
+                            Forget password
+                            <hr class="hrcol">
+                        </div>
+                        <div class="col-12 nestedDiv">
+
+                            <div class="form-group w-100 my-2">
+                                <label class="textleft w-75">Email:</label>
+                                <br>
+                                <input class="w-75" type="email" required
+                                    [class.is-valid]="sendCode.controls['email'].status == 'VALID' "
+                                    formControlName="email">
+                            </div>
+                            <div *ngIf="sendCode.controls['email'].errors && sendCode.controls['email'].touched"
+                                class="text-center  xx">
+                                <p>In-valid Email</p>
+                            </div>
+                            <div *ngIf="loginError" class="text-center text-danger my-1 loginError">
+                                <p>{{loginErrorMessage}}</p>
+                            </div>
+                            <div class="form-group w-100 my-2">
+                                <button class="loginBtn sendCodeBtn">Send Code</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+            <div class="lContaintForm p-5 restPassword">
+                <form [formGroup]="activateForm" (ngSubmit)="activateForgetPasswordForm()">
+                    <div class="row RF  m-auto mt-4 pt-2 px">
+                        <div class="col-12  rohead px-3 pt-3">
+                            Forget password
+                            <hr class="hrcol">
+                        </div>
+                        <div class="col-12 nestedDiv">
+
+                            <div class="form-group w-100 my-2">
+                                <label class="textleft w-75">Email:</label>
+                                <br>
+                                <input class="w-75" type="email" required
+                                    [class.is-valid]="activateForm.controls['email'].status == 'VALID' "
+                                    formControlName="email">
+                            </div>
+                            <div *ngIf="activateForm.controls['email'].errors && activateForm.controls['email'].touched"
+                                class="text-center  xx">
+                                <p>In-valid Email</p>
+                            </div>
+
+
+
+                            <div class="form-group w-100 my-2">
+                                <label class="textleft w-75">Activation Code:</label>
+                                <br>
+                                <input class="w-75" type="number" min="0" required
+                                    [class.is-valid]="activateForm.controls['code'].status == 'VALID' "
+                                    formControlName="code">
+                            </div>
+                            <div *ngIf="activateForm.controls['code'].errors && activateForm.controls['code'].touched"
+                                class="text-center  xx">
+                                <p>In-valid Activation Code</p>
+                            </div>
+
+
+                            <div class="form-group w-100 my-2">
+                                <label class="textleft w-75">Password:</label>
+                                <br>
+                                <input class="w-75" type="password" required
+                                    [class.is-valid]="activateForm.controls['password'].status == 'VALID' "
+                                    formControlName="password">
+                            </div>
+
+                            <div *ngIf="activateForm.controls['password'].errors && activateForm.controls['password'].touched"
+                                class="text-center  xx">
+                                <p>In-valid password</p>
+                            </div>
+
+                            <div class="form-group w-100 my-2">
+                                <label class="textleft w-75">Repeat Password:</label>
+                                <br>
+                                <input class="w-75" type="password" required
+                                    [class.is-valid]="activateForm.controls['cPassword'].status == 'VALID' "
+                                    formControlName="cPassword">
+                            </div>
+                            <div *ngIf="activateForm.controls['cPassword'].errors && activateForm.controls['cPassword'].touched"
+                                class="text-center  xx">
+                                <p>Password and confirmation password misMatched</p>
+                            </div>
+                            <div *ngIf="loginError" class="text-center text-danger my-1 loginError">
+                                <p>{{loginErrorMessage}}</p>
+                            </div>
+                            <div class="form-group w-100 my-2">
+                                <button class="loginBtn">Rest-Password</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div> -->
+    <!-- <div class="rdiv">
+    </div> -->
+</section>
+<div class="overLayFF">
+    <div class=" text-center p-5 lContaint">
+        <div class="overLay" *ngIf="load">
+            <div class="d-flex w-100 h-100 justify-content-center align-items-center">
+                <i class="fa fa-spinner fa-5x fa-spin text-light"></i>
+            </div>
+        </div>
+        
+        <div class="sideAlert">
+            {{sideMessage}}
+        </div>
+        
+        <div id="overLay2" class="overLay2" *ngIf="load2" >
+            <div class="d-flex w-100 h-100 justify-content-center align-items-center">
+                <div class="successRegister p-5">
+                    <i class="fa fa-times RTI" (click)="closeLoad()"></i>
+                    <!-- <h2>Please Check Your Email To Complete the Process</h2>
+                    <p class="my-1"> Thanks for signup , your request is under reviwe by site Admin we will contact you Please keep an eye on your inbox</p> -->
+                    <p>
+                        Thank you for signing up. Your request will be reviewed by the admin and a confirmation email will be
+                        sent to your registered email address.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="signHead p-3">
+            <h1>Welcome Back</h1>
+            <p>Family reunion helps you to get closer to the people you lost but still alive</p>
+        </div>
+        <div class=" p-5 signinPart lContaintForm ">
+            <div class="row RF  m-auto mt-4 pt-2 px">
+                <div class="col-6 rohead roSignup px-3 pt-3">
+                    Sign Up
+                </div>
+                <div class="col-6 rohead roSign px-3 pt-3 bg-red">
+                    <p class="mb-2">Sign In</p>
+                    <hr class="hrcol">
+                </div>
+                <div class="col-12 nestedDiv">
+                    <form [formGroup]="loginForm" (ngSubmit)="loginForm.valid && handelSignIn()">
+                        <div class="form-group w-100 my-1">
+                            <label class="textleft w-75">Email:</label>
+                            <br>
+                            <input class="w-75" type="email" required
+                                [class.is-valid]="loginForm.controls.email.status == 'VALID' " formControlName="email">
+                        </div>
+                        <div *ngIf="loginForm.controls.email.errors && loginForm.controls.email.touched"
+                            class="text-center my-1 xx">
+                            <p>In-valid Email</p>
+                        </div>
+
+
+                        <div class="form-group w-100 my-3">
+                            <label class="textleft w-75">Password:</label>
+                            <br>
+                            <input class="w-75" type="password" required
+                                [class.is-valid]="loginForm.controls['password'].status == 'VALID' "
+                                formControlName="password">
+                            <div *ngIf="loginForm.controls['password'].errors && loginForm.controls['password'].touched "
+                                class="text-center  xx">
+                                <p>In-valid Pasword</p>
+                            </div>
+                        </div>
+                        <div *ngIf="loginError" class="text-center text-danger my-1 loginError">
+                            <p>{{loginErrorMessage}}</p>
+                        </div>
+                        <div class="form-group w-100 my-3">
+                            <button [disabled]="loginForm.invalid" class="loginBtn">Login</button>
+                            <p class="forget" (click)="getEmailToForget()">Forget Password</p>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+        <div class=" p-5 signupPart lContaintForm">
+            <form [formGroup]="signupForm" (ngSubmit)="handelSignUp()">
+
+                <div class="row RF  m-auto mt-4 pt-2 px">
+                    <div class="col-6 roSignup rohead px-3 pt-3">
+                        Sign Up
+                        <hr class="hrcol">
+                    </div>
+                    <div class="col-6 rohead roSign px-3 pt-3 bg-red">
+                        <p class="mb-2">Sign In</p>
+                    </div>
+                    <div class="col-12 nestedDiv">
+                        <div class="form-group w-100 my-2">
+                            <label class="textleft w-75">UserName:</label>
+                            <br>
+                            <input class="w-75" type="text" required
+                                [class.is-valid]="signupForm.controls.userName.status == 'VALID' "
+                                formControlName="userName">
+                        </div>
+                        <div *ngIf="signupForm.controls['userName'].errors && signupForm.controls['userName'].touched"
+                            class="text-center  xx">
+                            <p>In-valid UserName</p>
+                        </div>
+
+
+                        <div class="form-group w-100 my-2">
+                            <label class="textleft w-75">National ID:</label>
+                            <br>
+                            <input class="w-75" type="number" min="0" required
+                                [class.is-valid]="signupForm.controls['nationalID'].status == 'VALID' "
+                                formControlName="nationalID">
+                        </div>
+                        <div *ngIf="signupForm.controls['nationalID'].errors && signupForm.controls['nationalID'].touched"
+                            class="text-center  xx">
+                            <p>nationalID</p>
+                        </div>
+                        <div class="form-group w-100 my-2">
+                            <label class="textleft w-75">Email:</label>
+                            <br>
+                            <input class="w-75" type="email" required
+                                [class.is-valid]="signupForm.controls['email'].status == 'VALID' "
+                                formControlName="email">
+                        </div>
+                        <div *ngIf="signupForm.controls['email'].errors && signupForm.controls['email'].touched"
+                            class="text-center  xx">
+                            <p>In-valid Email</p>
+                        </div>
+                        
+                        <div class="form-group w-100 my-1">
+                            <label class="textleft w-75">Phone:</label>
+                            <br>
+                            <input class="w-75" type="number" min="0" required
+                                [class.is-valid]="signupForm.controls.phone.status == 'VALID' " formControlName="phone">
+                        </div>
+                        <div *ngIf="signupForm.controls.phone.errors && signupForm.controls.phone.touched"
+                            class="text-center my-1 xx">
+                            <p>In-valid Phone</p>
+                        </div>
+
+                        <div class="form-group w-100 my-1">
+                            <label class="textleft w-75">Address:</label>
+                            <br>
+                            <input class="w-75" type="email" required
+                                [class.is-valid]="signupForm.controls.address.status == 'VALID' " formControlName="address">
+                        </div>
+                        <div *ngIf="signupForm.controls.address.errors && signupForm.controls.address.touched"
+                            class="text-center my-1 xx">
+                            <p>In-valid Address</p>
+                        </div>
+
+                        <div class="form-group w-100 my-2">
+                            <label class="textleft w-75">Password:</label>
+                            <br>
+                            <input class="w-75" type="password" required
+                                [class.is-valid]="signupForm.controls['password'].status == 'VALID' "
+                                formControlName="password">
+                        </div>
+                        <div *ngIf="signupForm.controls['password'].errors && signupForm.controls['password'].touched"
+                            class="text-center  xx">
+                            <p>In-valid password</p>
+                        </div>
+
+                        <div class="form-group w-100 my-2">
+                            <label class="textleft w-75">Repeat Password:</label>
+                            <br>
+                            <input class="w-75" type="password" required
+                                [class.is-valid]="signupForm.controls['Cpassword'].status == 'VALID' "
+                                formControlName="Cpassword">
+                        </div>
+                        <div *ngIf="signupForm.controls['Cpassword'].errors && signupForm.controls['Cpassword'].touched"
+                            class="text-center  xx">
+                            <p>Password and confirmation password misMatched</p>
+                        </div>
+
+
+                        <div class="form-group w-100 my-2">
+                            <label class="textleft w-75">Role:</label>
+                            <br>
+                            <div class="d-flex w-75 justify-content-center">
+                                <div>
+                                    <input formControlName="role" value="Admin" class="form-check-input" type="radio"
+                                        name="role" id="flexRadioDefault1" checked>
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Admin
+                                    </label>
+                                </div>
+                                <div class="form-check-label-dev">
+                                    <input formControlName="role" value="Shelter" class="form-check-input ml-2"
+                                        type="radio" name="role" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Shelter
+                                    </label>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div *ngIf="loginError" class="text-center text-danger my-1 loginError">
+                            <p>{{loginErrorMessage}}</p>
+                        </div>
+
+                        <div class="form-group w-100 my-2">
+                            <button class="loginBtn">SignUp</button>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+        <div class=" p-5 SendCode lContaintForm">
+            <form [formGroup]="sendCode" (ngSubmit)="handelSendCode()">
+                <div class="row RF  m-auto mt-4 pt-2 px">
+                    <div class="col-12  rohead px-3 pt-3">
+                        Forget password
+                        <hr class="hrcol">
+                    </div>
+                    <div class="col-12 nestedDiv">
+
+                        <div class="form-group w-100 my-2">
+                            <label class="textleft w-75">Email:</label>
+                            <br>
+                            <input class="w-75" type="email" required
+                                [class.is-valid]="sendCode.controls['email'].status == 'VALID' "
+                                formControlName="email">
+                        </div>
+                        <div *ngIf="sendCode.controls['email'].errors && sendCode.controls['email'].touched"
+                            class="text-center  xx">
+                            <p>In-valid Email</p>
+                        </div>
+                        <div *ngIf="loginError" class="text-center text-danger my-1 loginError">
+                            <p>{{loginErrorMessage}}</p>
+                        </div>
+                        <div class="form-group w-100 my-2">
+                            <button class="loginBtn sendCodeBtn">Send Code</button>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+        <div class=" p-5 restPassword lContaintForm">
+            <form [formGroup]="activateForm" (ngSubmit)="activateForgetPasswordForm()">
+                <div class="row RF  m-auto mt-4 pt-2 px">
+                    <div class="col-12  rohead px-3 pt-3">
+                        Forget password
+                        <hr class="hrcol">
+                    </div>
+                    <div class="col-12 nestedDiv">
+
+                        <div class="form-group w-100 my-2">
+                            <label class="textleft w-75">Email:</label>
+                            <br>
+                            <input class="w-75" type="email" required
+                                [class.is-valid]="activateForm.controls['email'].status == 'VALID' "
+                                formControlName="email">
+                        </div>
+                        <div *ngIf="activateForm.controls['email'].errors && activateForm.controls['email'].touched"
+                            class="text-center  xx">
+                            <p>In-valid Email</p>
+                        </div>
+
+
+
+                        <div class="form-group w-100 my-2">
+                            <label class="textleft w-75">Activation Code:</label>
+                            <br>
+                            <input class="w-75" type="number" min="0" required
+                                [class.is-valid]="activateForm.controls['code'].status == 'VALID' "
+                                formControlName="code">
+                        </div>
+                        <div *ngIf="activateForm.controls['code'].errors && activateForm.controls['code'].touched"
+                            class="text-center  xx">
+                            <p>In-valid Activation Code</p>
+                        </div>
+
+
+                        <div class="form-group w-100 my-2">
+                            <label class="textleft w-75">Password:</label>
+                            <br>
+                            <input class="w-75" type="password" required
+                                [class.is-valid]="activateForm.controls['password'].status == 'VALID' "
+                                formControlName="password">
+                        </div>
+
+                        <div *ngIf="activateForm.controls['password'].errors && activateForm.controls['password'].touched"
+                            class="text-center  xx">
+                            <p>In-valid password</p>
+                        </div>
+
+                        <div class="form-group w-100 my-2">
+                            <label class="textleft w-75">Repeat Password:</label>
+                            <br>
+                            <input class="w-75" type="password" required
+                                [class.is-valid]="activateForm.controls['cPassword'].status == 'VALID' "
+                                formControlName="cPassword">
+                        </div>
+                        <div *ngIf="activateForm.controls['cPassword'].errors && activateForm.controls['cPassword'].touched"
+                            class="text-center  xx">
+                            <p>Password and confirmation password misMatched</p>
+                        </div>
+                        <div *ngIf="loginError" class="text-center text-danger my-1 loginError">
+                            <p>{{loginErrorMessage}}</p>
+                        </div>
+                        <div class="form-group w-100 my-2">
+                            <button class="loginBtn">Rest-Password</button>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <!-- <h3>Helllllllllo</h3> -->
+</div>
+
+<!-- <section>
+
+
+    <div class="d-flex align-items-center justify-content-center login py-5">
+
+        <div class="firstForm">
+
+            <form [formGroup]="loginForm" (ngSubmit)="loginForm.valid && handelSignIn()">
+
+                <div class="logwall d-flex align-items-end justify-content-center ">
+                    <div class="nameinowall">
+                        <div class="circleIconDiv">
+                            <div class="circleIcon d-flex">
+                                <i class="far fa-user m-auto"></i>
+                            </div>
+                        </div>
+                        <div class="row">
+                           
+                            <div class="col-2 pe-0">
+                                <div class="iconDiv d-flex align-items-center justify-content-center">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                            </div>
+                            <div class="col-10 ps-0">
+                                <input class="nameino" placeholder="Email" type="text"
+                                    [class.is-valid]="loginForm.controls.email.status == 'VALID' "
+                                    formControlName="email">
+                            </div>
+                            <div *ngIf="loginForm.controls.email.errors && loginForm.controls.email.touched"
+                                class="text-center text-danger">
+                                <p>In-valid Email</p>
+                            </div>
+                            <div class="col-2 pe-0">
+                                <div class="iconDiv d-flex align-items-center justify-content-center">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                            </div>
+                            <div class="col-10 ps-0">
+                                <input class="nameino" placeholder="Password" type="password"
+                                    [class.is-valid]="loginForm.controls.password.status == 'VALID' "
+                                    formControlName="password">
+                            </div>
+                            <div *ngIf="loginForm.controls.password.errors && loginForm.controls.password.touched"
+                                class="text-center text-danger">
+                                <p>In-valid Pasword</p>
+                            </div>
+                            <div *ngIf="loginError" class="text-center text-danger">
+                                <p>{{loginErrorMessage}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 mt-5">
+                            </div>
+                            <div class="col-6 mt-5 d-flex">
+                                <a (click)="setForgetForm()" class="loginLink FFLink ms-auto">Forgort password?</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="loginbtn d-flex align-items-end justify-content-center ">
+                    <button [disabled]="loginForm.invalid">Login</button>
+                </div>
+            </form>
+            <a routerLink="/signUp" class="logLink d-flex align-items-end justify-content-center">
+                <span class="text-center">Don't have an account?</span>
+            </a>
+        </div>
+        <div class="secondForm">
+            <form [formGroup]="forgetPasswordForm" (ngSubmit)="forgetPasswordForm.valid && handelForgetPassword()">
+                <div class="logwall d-flex align-items-end justify-content-center ">
+
+                    <div class="nameinowall">
+                        <div class="circleIconDiv">
+                            <div class="circleIcon d-flex">
+                                <i class="far fa-user m-auto"></i>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2 pe-0">
+                                <div class="iconDiv d-flex align-items-center justify-content-center">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                            </div>
+                            <div class="col-10 ps-0">
+                                <input class="nameino" placeholder="Email" type="text"
+                                    [class.is-valid]="forgetPasswordForm.controls.email.status == 'VALID' "
+                                    formControlName="email">
+                            </div>
+                            <div class="col-12 text-center">
+                                <p style="color: #031f45;">Please enter the email associated with your account</p>
+                            </div>
+                            <div *ngIf="forgetPasswordForm.controls.email.errors && forgetPasswordForm.controls.email.touched"
+                                class="text-center text-danger">
+                                <p>In-valid Email</p>
+                            </div>
+                            <div *ngIf="loginError" class="text-center text-danger">
+                                <p>{{loginErrorMessage}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 mt-5">
+                            </div>
+                            <div class="col-6 mt-5 d-flex">
+                                <a (click)="backLogin()" class="loginLink ms-auto">Back to login</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="loginbtn d-flex align-items-end justify-content-center ">
+                    <button [disabled]="forgetPasswordForm.invalid" class="submitEmali">Submit</button>
+                </div>
+            </form>
+            <a routerLink="/signUp" class="logLink d-flex align-items-end justify-content-center">
+                <span class="text-center">Don't have an account?</span>
+            </a>
+        </div>
+        <div class="thirdForm">
+            <form [formGroup]="checkCodeForm" (ngSubmit)="checkCodeForm.valid && handelCheckCode()">
+                <div class="logwall d-flex align-items-end justify-content-center ">
+
+                    <div class="nameinowall">
+                        <div class="circleIconDiv">
+                            <div class="circleIcon d-flex">
+                                <i class="far fa-user m-auto"></i>
+                            </div>
+                        </div>
+                        <div class="row">
+                          
+                            <div class="col-2 pe-0">
+                                <div class="iconDiv d-flex align-items-center justify-content-center">
+                                    <i class="fas fa-keyboard"></i>
+                                </div>
+                            </div>
+                            <div class="col-10 ps-0">
+                                <input class="nameino" placeholder="Enter-Code" type="text"
+                                    [class.is-valid]="checkCodeForm.controls.code.status == 'VALID' "
+                                    formControlName="code">
+                            </div>
+                            <div class="col-12 text-center">
+                                <p style="color: #031f45;">Please enter the code</p>
+                            </div>
+                            <div *ngIf="checkCodeForm.controls.code.errors && checkCodeForm.controls.code.touched"
+                                class="text-center text-danger">
+                                <p>In-valid code</p>
+                            </div>
+                            <div *ngIf="loginError" class="text-center text-danger">
+                                <p>{{loginErrorMessage}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 mt-5">
+                            </div>
+                            <div class="col-6 mt-5 d-flex">
+                                <a (click)="handelForgetPassword()" class="loginLink ms-auto">Resend code</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="loginbtn d-flex align-items-end justify-content-center ">
+                    <button [disabled]="checkCodeForm.invalid" class="submitCode">Submit</button>
+                </div>
+            </form>
+            <a routerLink="/signUp" class="logLink d-flex align-items-end justify-content-center">
+                <span class="text-center">Don't have an account?</span>
+            </a>
+        </div>
+        <div class="forthForm">
+            <form [formGroup]="activateForm" (ngSubmit)="activateForm.valid && activateForgetPasswordForm()">
+                <div class="logwall d-flex align-items-end justify-content-center ">
+                    <div class="nameinowall">
+                        <div class="circleIconDiv">
+                            <div class="circleIcon d-flex">
+                                <i class="far fa-user m-auto"></i>
+                            </div>
+                        </div>
+                        <div class="row">
+                        
+                            <div class="col-2 pe-0">
+                                <div class="iconDiv d-flex align-items-center justify-content-center">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                            </div>
+                            <div class="col-10 ps-0">
+                                <input class="nameino" placeholder="Password" type="password"
+                                    [class.is-valid]="activateForm.controls.password.status == 'VALID' "
+                                    formControlName="password">
+                            </div>
+                            <div *ngIf="activateForm.controls.password.errors && activateForm.controls.password.touched"
+                            class="text-center text-danger">
+                            <p>In-valid password</p>
+                        </div> 
+
+                            <div class="col-2 pe-0">
+                                <div class="iconDiv d-flex align-items-center justify-content-center">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                            </div>
+                         
+                            <div class="col-10 ps-0">
+                                <input class="nameino" placeholder="Confirm Password" type="password"
+                                    [class.is-valid]="activateForm.controls.cPassword.status == 'VALID' "
+                                    formControlName="cPassword">
+                            </div>
+                            <div class="col-12 text-center">
+                                <p style="color: #031f45;">Please enter new password</p>
+                            </div>
+                            <div *ngIf="activateForm.controls.cPassword.errors && activateForm.controls.cPassword.touched"
+                                class="text-center text-danger">
+                                <p>In-valid confirmation password</p>
+                            </div>
+                            <div *ngIf="loginError" class="text-center text-danger">
+                                <p>{{loginErrorMessage}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 mt-5">
+                            </div>
+                            <div class="col-6 mt-5 d-flex">
+                                <a (click)="backLogin()" class="loginLink ms-auto">Back to login</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="loginbtn d-flex align-items-end justify-content-center ">
+                    <button [disabled]="activateForm.invalid">Submit</button>
+                </div>
+            </form>
+            <a routerLink="/signUp" class="logLink d-flex align-items-end justify-content-center">
+                <span class="text-center">Don't have an account?</span>
+            </a>
+        </div>
+    </div>
+</section> -->

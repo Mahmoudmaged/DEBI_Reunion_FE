@@ -1,0 +1,14 @@
+.notfound::-webkit-scrollbar {
+    display: none;
+  }
+.notfound{
+    height: 100vh;
+    // width: 100vw;
+    overflow: hidden;
+    cursor: pointer;
+    background-image: url("../../../assets/imgs/404-error-page-not-found-plug-graphic-background-vector-21467715.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}

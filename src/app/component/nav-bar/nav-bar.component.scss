@@ -1,0 +1,192 @@
+$mainColor: #630E2B;
+$whiteColor :#fff;
+
+.sideAlert {
+    background-color: #630E2B;
+    color: $whiteColor;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    position: fixed;
+    right: -100%;
+    top: 5%;
+    padding: 10px 20px;
+    transition: all 1s;
+    z-index: 9999999999999;
+}
+
+.navbar {
+    // background-color: palevioletred;
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 555555;
+}
+
+
+.navbar-brand img {
+    width: 40px;
+}
+
+.navbar-toggler {
+    color: $whiteColor !important;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.nav-link {
+    color: $whiteColor !important;
+    font-size: 18px;
+    font-weight: 500 !important;
+    // font-style: italic;
+}
+
+.hprof {
+    cursor: pointer;
+}
+
+.nav-login,
+.nav-signUp,
+.nav-logout {
+    padding: 4px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 17px;
+    transition: all .7s;
+}
+
+.nav-signUp {
+    background-color: #000;
+    border: 0px solid transparent;
+    color: $whiteColor;
+}
+
+.nav-login,
+.nav-logout {
+    background-color: $mainColor;
+    padding: 4px 20px;
+    color: $whiteColor;
+}
+
+.nav-login:hover,
+.nav-signUp:hover,
+.nav-logout:hover {
+    text-decoration: none !important;
+}
+
+// .nav-signUp:hover {
+//     color: $mainColor;
+//     border: 0px;
+//     background-color: $whiteColor;
+// }
+
+
+// .nav-login:hover{
+//     color: $whiteColor;
+//     border: 0px;
+//     background-color: #000;
+// }
+
+
+// .nav-login:hover ~ .nav-signUp {
+//     color: $mainColor !important;
+//     border: 0px !important;
+//     background-color: $whiteColor !important;
+// }
+
+
+
+.nav-logout:hover {
+    background-color: $mainColor;
+    padding: 4px 20px;
+    color: $whiteColor;
+    border-color: $whiteColor;
+}
+
+
+
+
+
+
+
+
+
+.nav-signUp2,
+.nav-login2,
+.nav-logout2,
+.OCP2 {
+    background-color: transparent;
+    border: 0px solid $mainColor !important;
+    color: $whiteColor !important;
+    transition: all .5s;
+    cursor: pointer;
+    border-radius: 0px;
+    padding: 0 !important
+}
+
+.OCP2 {
+    font-size: 18px;
+    line-height: 1;
+    padding-top: 5px;
+    border: 0px solid $mainColor !important;
+    color: $whiteColor;
+    transition: all .5s;
+    cursor: pointer;
+    border-radius: 0px;
+    padding: 0 !important
+}
+
+
+.nav-signUp2:hover,
+.nav-login2:hover,
+.nav-logout2,
+.OCP2 {
+    background-color: transparent !important;
+    border: 0px solid $mainColor !important;
+    color: $whiteColor !important;
+    transition: all .5s !important;
+    cursor: pointer !important;
+    border-radius: 0 !important;
+    padding: 0 !important
+}
+
+
+.OCP {
+    text-decoration: none;
+    color: $whiteColor !important;
+    background-color: transparent;
+}
+
+.navForm2 {
+    display: none;
+}
+
+.changeColor {
+    background-color: $mainColor !important;
+    opacity: 0.7;
+}
+
+// .changeNavLink {
+//     color: $whiteColor !important;
+// }
+
+
+
+@media only screen and (max-width: 991px) {
+
+
+    .navForm {
+        display: none !important;
+    }
+
+    .navForm2 {
+        display: block;
+    }
+}

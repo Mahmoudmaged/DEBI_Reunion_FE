@@ -1,0 +1,28 @@
+
+agm-map{
+    height: 400px;
+}
+
+
+$lightBlue: #2D62ED;
+$darkBlue: #3D14A2;
+$lightRed: #FF007C;
+$lightGreen: #F4F7FE;
+$darkViolet: #8729b9;
+$mainColor: #630E2B;
+$blackColor: #000;
+$whiteColor: #fff;
+
+.sideAlert {
+    background-color: #630E2B;
+    color: $whiteColor;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    position: fixed;
+    right: -100%;
+    top: 5%;
+    padding: 10px 20px;
+    transition: all 1s;
+    z-index: 9999999999999;
+}
+ 

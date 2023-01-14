@@ -1,0 +1,104 @@
+<div class="sideAlert">
+    {{sideMessage}}
+</div>
+<section class="main d-flex">
+
+
+    <div class="leftPart  d-flex">
+        <div class="sideNav">
+           <app-side-nav></app-side-nav>
+        </div>
+        <div class="secondCol py-5">
+            <div class="searchBar px-2 my-2">
+                <input class=" nnn" type="text" placeholder="Search">
+                <i class="fa fa-search"></i>
+            </div>
+            <div class="todayContainer ">
+                <div class="todayReportList px-2 mt-5">
+                    <div class="todayReport">
+                        <p>Report</p>
+                        <hr>
+                    </div>
+
+                    <div *ngFor="let _responseData of responseData;  let i = index" class="row d-flex justify-content-center my-3">
+                        <div class="col-md-4">
+                            <img class="todayImg"
+                                src="{{_responseData.imageURl}}">
+                        </div>
+                        <div class="col-md-8 mt-2 todayInfo">
+                            <p>{{_responseData.name}}</p>
+                            <p class="todayTime">{{i+13}}.min ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="middlePart ps-1">
+        <div *ngIf="isActive" >
+            <p  class="text-danger bg-dark"> {{isActive}} </p>
+        </div>
+        <h2 class="my-1">Home</h2>
+        <div class="middleUserInfo">
+            <div class="d-flex">
+                <img class="profImage" src="../../../assets/imgs/7a70083d-2a85-4eef-9340-f6cdb1f2005f.png" alt="" srcset="">
+                <h4 class="mb-1 ms-2">Welcome back Elwan!</h4>
+            </div>
+            <p>Since your last login on system there was</p>
+            <ul class="my-1 ps-5">
+                <li>{{responseData.length}} new report</li>
+                <li>45 new message</li>
+            </ul>
+        </div>
+        <div class="analytics my-2  p-2">
+            <div class="overLayer d-flex justify-content-center align-items-center">
+                <h2>Coming Soon</h2>
+            </div>
+        </div>
+
+    </div>
+    <div class="rightPart px-5 py-2">
+        <div class="row justify-content-end align-items-center h-100">
+            <div class="col-md-6 mb-1 p-2 infoP" (click)="Navigate('report')">
+                <div class="newR py-2 ps-3">
+                    <i class="fa fa-copy "></i>
+                    <div class="info">
+                        <p>5.8K</p>
+                        <p>Report</p>
+                    </div>
+                    <div class="text-end pe-2 mt-1">
+                        <img class="img-fluid" src="../../../assets/imgs/elwan 2/More Button 1.png">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-1 p-2 infoP" (click)="Navigate('homeLess')">
+                <div class="pf py-2 ps-2">
+                    <i class="fa fa-user "></i>
+                    <div class="info">
+                        <p>5.8K</p>
+                        <p>Homeless</p>
+                    </div>
+                    <div class="text-end pe-2 mt-1">
+                        <!-- <i class="fa fa-arrow-right" aria-hidden="true"></i> -->
+                        <img class="img-fluid" src="../../../assets/imgs/elwan 2/More Button 2.png">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12  chat">
+                <div class="overLayer d-flex justify-content-center align-items-center">
+                    <h3>Coming Soon</h3>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<div class="overLayerAll d-flex justify-content-center align-items-center">
+    <i class="fa fa-times" (click)="closeOvelAll()"></i>
+    <section class="constiner ReportSec">
+         
+    </section>
+</div>

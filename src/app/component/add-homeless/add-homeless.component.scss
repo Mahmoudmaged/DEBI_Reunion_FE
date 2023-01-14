@@ -1,0 +1,23 @@
+@import '../quick-search/quick-search.component.scss';
+
+.fa-angle-up{
+    display: block;
+}
+.rIfo{
+    cursor: pointer;
+}
+
+
+.sideAlert {
+    background-color: #630E2B;
+    color: $whiteColor;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    position: fixed;
+    right: -100%;
+    top: 5%;
+    padding: 10px 20px;
+    transition: all 1s;
+    z-index: 9999999999999;
+}
+ 

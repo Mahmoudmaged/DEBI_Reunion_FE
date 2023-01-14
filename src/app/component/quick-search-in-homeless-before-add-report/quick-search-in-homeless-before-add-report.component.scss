@@ -1,0 +1,29 @@
+@import '../quick-search/quick-search.component.scss';
+.middlePart{
+    width:  100% !important;
+    // overflow-y: hidden;
+    
+    // background-color: lightgray;
+}
+.noMatching span{
+    color: $mainColor;
+}
+.loremText{
+    overflow: hidden !important
+}
+.sideAlert {
+    background-color: #630E2B;
+    color: $whiteColor;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    position: fixed;
+    right: -100%;
+    top: 5%;
+    padding: 10px 20px;
+    transition: all 1s;
+    z-index: 9999999999999;
+}
+.inputCustomError p{
+    overflow-y: hidden;
+}
+ 
